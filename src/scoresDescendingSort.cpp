@@ -20,6 +20,26 @@ struct student {
 	int score;
 };
 
+void swap(char* str1, char* str2){
+	char* temp = str1;
+	str1 = str2;
+	str2 = temp;
+}
+
 void * scoresDescendingSort(struct student *students, int len) {
+	if (students != NULL && len > 0){
+		int i, j;
+		for (i = 0; i < len; i++){
+			for (j = 0; j < i - 1; j++){
+				if (students[i].score > students[j].score){
+					int temp = students[i].score;
+					students[i].score = students[j].score;
+					students[j].score = temp;
+					swap(students[i].name, students[j].name);
+				}
+			}
+		}
+		return students;
+	}
 	return NULL;
 }
